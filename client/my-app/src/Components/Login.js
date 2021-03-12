@@ -70,7 +70,7 @@ class Login extends React.Component {
         alertMessage: '',
       });
 
-      fetch(' http://ocalhost:3004/signup', {
+      fetch(' http://localhost:3004/signup', {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
