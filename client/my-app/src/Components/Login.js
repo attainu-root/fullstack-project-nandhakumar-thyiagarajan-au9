@@ -70,27 +70,35 @@ class Login extends React.Component {
         alertMessage: '',
       });
 
-      fetch(' http://localhost:3004/signup', {
+      fetch('http://localhost:8900/register', {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         method: 'POST',
         body: JSON.stringify({
-          name: this.state.Username,
+          username: this.state.Username,
           email: this.state.Email,
           password: this.state.Password,
         }),
       })
         .then((res) => res.json())
         .then((data) => {
-          this.controlChange();
+          if (data) {
+            this.setState({
+              ...this.state,
+              alert: true,
+              alertMessage: data,
+            });
+          } else {
+            this.controlChange();
+          }
         })
-        .catch((error) => {
+        .catch((err) => {
           this.setState({
             ...this.state,
             alert: true,
-            alertMessage: 'SERVER ERROR OR EMAIL ALREADY USED',
+            alertMessage: 'SERVER ERROR',
           });
         });
     }
