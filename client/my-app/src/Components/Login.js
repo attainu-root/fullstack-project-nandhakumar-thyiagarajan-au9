@@ -76,6 +76,7 @@ class Login extends React.Component {
           'Content-Type': 'application/json',
         },
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify({
           username: this.state.Username,
           email: this.state.Email,
@@ -125,24 +126,35 @@ class Login extends React.Component {
       });
 
       // posting for login
-      fetch('http://localhost:3004/Login', {
+      fetch('http://localhost:8900/login', {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify({
           email: this.state.Email,
           password: this.state.Password,
         }),
       })
         .then((res) => res.json())
-        .then((data) => this.props.history.push('/homepage'))
+        .then((data) => {
+          if (data) {
+            this.setState({
+              ...this.state,
+              alert: true,
+              alertMessage: data,
+            });
+          } else {
+            this.props.history.push('/homepage');
+          }
+        })
         .catch((error) => {
           this.setState({
             ...this.state,
             alert: true,
-            alertMessage: 'SERVER ERROR OR PUT CORRECT EMAIL AND PASSWORD',
+            alertMessage: 'SERVER ERROR',
           });
         });
     }

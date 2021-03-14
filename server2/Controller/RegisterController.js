@@ -1,4 +1,4 @@
-var User = require('../Schema/Register');
+var User = require('../Schema/RegisterSchema');
 
 var bcrypt = require('bcrypt');
 
