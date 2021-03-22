@@ -1,0 +1,35 @@
+.post_form {
+  height: 82vh;
+  width: 40vw;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .post_paper {
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .post_form_heading {
+      font-family: fantasy;
+      font-size: 30px;
+      font-weight: 150;
+      color: slateblue;
+    }
+
+    .form_upload {
+      position: relative;
+      .form_input {
+        position: absolute;
+        z-index: 1;
+        width: 115px;
+        height: 37px;
+        opacity: 0;
+      }
+    }
+  }
+}

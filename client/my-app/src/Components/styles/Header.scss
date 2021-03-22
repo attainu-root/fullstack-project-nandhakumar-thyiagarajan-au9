@@ -1,0 +1,14 @@
+.Header_section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 18vh;
+  color: whitesmoke;
+  .Header_title {
+    color: lightcoral;
+    font-family: cursive;
+  }
+  .Header_link {
+    color: lightskyblue;
+  }
+}
