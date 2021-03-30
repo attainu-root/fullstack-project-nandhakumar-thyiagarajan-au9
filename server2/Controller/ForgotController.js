@@ -14,7 +14,7 @@ async function emailcheck(req, res) {
         service: "gmail",
         auth: {
           user: "nandhakumar19984@gmail.com",
-          pass: "thilagavathi888",
+          pass: "something",
         },
       });
 
