@@ -1,20 +1,20 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Alert from '@material-ui/lab/Alert';
-import './Login.css';
-
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Alert from "@material-ui/lab/Alert";
+import "./Login.css";
+import { Link } from "react-router-dom";
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       signup: false,
-      Username: '',
-      Email: '',
-      Password: '',
-      RepeatPassword: '',
+      Username: "",
+      Email: "",
+      Password: "",
+      RepeatPassword: "",
       alert: false,
-      alertMessage: '',
+      alertMessage: "",
     };
   }
 
@@ -22,12 +22,12 @@ class Login extends React.Component {
     this.setState((prevState) => ({
       ...this.state,
       signup: !prevState.signup,
-      Username: '',
-      Email: '',
-      Password: '',
-      RepeatPassword: '',
+      Username: "",
+      Email: "",
+      Password: "",
+      RepeatPassword: "",
       alert: false,
-      alertMessage: '',
+      alertMessage: "",
     }));
   };
 
@@ -43,40 +43,40 @@ class Login extends React.Component {
       this.setState({
         ...this.state,
         alert: true,
-        alertMessage: 'ENTER USERNAME',
+        alertMessage: "ENTER USERNAME",
       });
     } else if (this.state.Email.length <= 10) {
       this.setState({
         ...this.state,
         alert: true,
-        alertMessage: 'ENTER VALID EMAIL',
+        alertMessage: "ENTER VALID EMAIL",
       });
     } else if (this.state.Password.length <= 5) {
       this.setState({
         ...this.state,
         alert: true,
-        alertMessage: 'ENTER STRONG PASSWORD',
+        alertMessage: "ENTER STRONG PASSWORD",
       });
     } else if (this.state.Password !== this.state.RepeatPassword) {
       this.setState({
         ...this.state,
         alert: true,
-        alertMessage: 'BOTH PASSWORD MISMATCH',
+        alertMessage: "BOTH PASSWORD MISMATCH",
       });
     } else {
       this.setState({
         ...this.state,
         alert: false,
-        alertMessage: '',
+        alertMessage: "",
       });
 
-      fetch('http://localhost:8900/register', {
+      fetch("http://localhost:8900/register", {
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'POST',
-        credentials: 'include',
+        method: "POST",
+        credentials: "include",
         body: JSON.stringify({
           username: this.state.Username,
           email: this.state.Email,
@@ -99,7 +99,7 @@ class Login extends React.Component {
           this.setState({
             ...this.state,
             alert: true,
-            alertMessage: 'SERVER ERROR',
+            alertMessage: "SERVER ERROR",
           });
         });
     }
@@ -110,29 +110,29 @@ class Login extends React.Component {
       this.setState({
         ...this.state,
         alert: true,
-        alertMessage: 'ENTER VALID EMAIL',
+        alertMessage: "ENTER VALID EMAIL",
       });
     } else if (this.state.Password.length <= 5) {
       this.setState({
         ...this.state,
         alert: true,
-        alertMessage: 'ENTER VALID PASSWORD',
+        alertMessage: "ENTER VALID PASSWORD",
       });
     } else {
       this.setState({
         ...this.state,
         alert: false,
-        alertMessage: '',
+        alertMessage: "",
       });
 
       // posting for login
-      fetch('http://localhost:8900/login', {
+      fetch("http://localhost:8900/login", {
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'POST',
-        credentials: 'include',
+        method: "POST",
+        credentials: "include",
         body: JSON.stringify({
           email: this.state.Email,
           password: this.state.Password,
@@ -147,14 +147,14 @@ class Login extends React.Component {
               alertMessage: data,
             });
           } else {
-            this.props.history.push('/homepage');
+            this.props.history.push("/homepage");
           }
         })
         .catch((error) => {
           this.setState({
             ...this.state,
             alert: true,
-            alertMessage: 'SERVER ERROR',
+            alertMessage: "SERVER ERROR",
           });
         });
     }
@@ -245,7 +245,11 @@ class Login extends React.Component {
                 <div>
                   {/* redirection to signup */}
                   <Button onClick={this.controlChange}>SIGN UP</Button>
-                  <Button>FORGOT PASSWORD</Button>
+                  <Button>
+                    <Link className="forgot_password" to="/forgotpassword">
+                      FORGOT PASSWORD
+                    </Link>
+                  </Button>
                 </div>
               </>
             )}

@@ -1,23 +1,24 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import Router from './Router/Routes';
-import './index.css';
+import React from "react";
+import ReactDom from "react-dom";
+import Router from "./Router/Routes";
+import "./index.css";
 
-import Rootreducer from './Reducers/Rootreducer';
-import thunk from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
+import RootReducer from "./Reducers/Rootreducer";
 
-const store = createStore(Rootreducer, applyMiddleware(thunk));
+import thunk from "redux-thunk";
+import { applyMiddleware, createStore } from "redux";
+import { Provider } from "react-redux";
+
+const Store = createStore(RootReducer, applyMiddleware(thunk));
 
 const Index = () => {
   return (
     <React.Fragment>
-      <Provider store={store}>
+      <Provider store={Store}>
         <Router />
       </Provider>
     </React.Fragment>
   );
 };
 
-ReactDom.render(<Index />, document.getElementById('root'));
+ReactDom.render(<Index />, document.getElementById("root"));

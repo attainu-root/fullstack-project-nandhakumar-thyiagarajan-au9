@@ -1,0 +1,25 @@
+.postSection {
+  height: 82vh;
+  width: 60vw;
+  border: 1px solid black;
+  overflow-y: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postSection .postSection_heading {
+  font-family: fantasy;
+  font-size: 30px;
+  font-weight: 150;
+  color: slateblue;
+  margin: 15px;
+}
+/*# sourceMappingURL=PostSection.css.map */

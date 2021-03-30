@@ -1,0 +1,10 @@
+.card {
+  width: 350px;
+  margin: 15px;
+}
+
+.card .card_image {
+  height: 200px;
+  width: 100%;
+}
+/*# sourceMappingURL=Cards.css.map */

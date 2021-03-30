@@ -1,8 +1,9 @@
-import Login from './Login';
-import { combineReducers } from 'redux';
-
-const Rootreducer = combineReducers({
-  Login: Login,
+import { combineReducers } from "redux";
+import postReducer from "./post";
+import updateReducer from "./update";
+const RootReducer = combineReducers({
+  post: postReducer,
+  update: updateReducer,
 });
 
-export default Rootreducer;
+export default RootReducer;

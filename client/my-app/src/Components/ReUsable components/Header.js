@@ -1,24 +1,24 @@
-import React from 'react';
-import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
-import { Link } from 'react-router-dom';
-import '../styles/Header.css';
+import React from "react";
+import "../styles/Header.css";
+import Button from "@material-ui/core/Button";
+import axios from "axios";
 
 const Header = ({ props }) => {
+  const logout = () => {
+    axios
+      .get("http://localhost:8900/logout", { withCredentials: true })
+      .then((response) => {
+        props.history.push("/");
+      });
+    // console.log(props.history.push("/"));
+  };
   return (
     <React.Fragment>
       <header className="Header_section">
         <h1 className="Header_title">INSTAX</h1>
-        {/* //TODO:have to link profile page */}
-        {props === 'Homepage' && (
-          <>
-            <Link>
-              <AccountCircleRoundedIcon
-                fontSize="large"
-                className="Header_link"
-              />
-            </Link>
-          </>
-        )}
+        <Button variant="contained" color="primary" onClick={logout}>
+          LOGOUT
+        </Button>
       </header>
     </React.Fragment>
   );

@@ -32,3 +32,8 @@
 .primary_inputs {
   width: 250px;
 }
+
+.forgot_password {
+  text-decoration: none;
+  color: black;
+}
