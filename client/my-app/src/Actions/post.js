@@ -10,7 +10,9 @@ const Createpost = (posts) => {
 export const postApi = (form_data) => {
   return function (dispatch) {
     axios
-      .post("http://localhost:8900/post", form_data, { withCredentials: true })
+      .post("https://instax-backend.herokuapp.com/post", form_data, {
+        withCredentials: true,
+      })
       .then((response) => {
         dispatch(Createpost(response.data));
       })

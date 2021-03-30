@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const env = require("dotenv");
-env.config();
+const dotenv = require("dotenv");
+dotenv.config();
 const port = process.env.PORT;
 
 // middleware

@@ -11,10 +11,10 @@ const Router = (props) => {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Login} />
-          <Route path="/forgotpassword" exact component={Forgotpassword} />
-          <Route path="/homepage" exact>
+          <Route exact path="/homepage">
             <ProtectedRoute component={Homepage} />
           </Route>
+          <Route path="/forgotpassword" exact component={Forgotpassword} />
         </Switch>
       </BrowserRouter>
     </>

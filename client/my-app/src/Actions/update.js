@@ -24,7 +24,7 @@ export const finalUpdate = (updatedpost) => {
 export const updated = (updatedData) => {
   return (dispatch) => {
     axios
-      .patch("http://localhost:8900/post/updated", updatedData)
+      .patch("https://instax-backend.herokuapp.com/post/updated", updatedData)
       .then((response) => dispatch(finalUpdate(response.data)))
       .catch((error) => console.log(error));
   };

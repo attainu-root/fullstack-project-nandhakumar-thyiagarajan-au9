@@ -11,7 +11,7 @@ const fetchpost = (posts) => {
 const fetchposts = () => {
   return (dispatch) => {
     axios
-      .get("http://localhost:8900/post")
+      .get("https://instax-backend.herokuapp.com/post")
       .then((response) => dispatch(fetchpost(response.data)))
       .catch((error) => {
         throw error;

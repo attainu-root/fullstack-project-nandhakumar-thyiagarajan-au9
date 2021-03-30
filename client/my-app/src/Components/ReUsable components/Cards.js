@@ -28,9 +28,12 @@ class Cards extends React.Component {
 
   update = () => {
     axios
-      .get(`http://localhost:8900/post/update/${this.props.data._id}`, {
-        withCredentials: true,
-      })
+      .get(
+        `https://instax-backend.herokuapp.com/post/update/${this.props.data._id}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((response) =>
         this.setState({
           ...this.state,
@@ -43,7 +46,7 @@ class Cards extends React.Component {
   likesCheck = () => {
     axios
       .post(
-        "http://localhost:8900/post/checklikes",
+        "https://instax-backend.herokuapp.com/post/checklikes",
         {
           _id: this.props.data._id,
         },
@@ -62,7 +65,7 @@ class Cards extends React.Component {
   togglelike = () => {
     axios
       .post(
-        "http://localhost:8900/post/togglelike",
+        "https://instax-backend.herokuapp.com/post/togglelike",
         {
           _id: this.props.data._id,
           toggle: this.state.toggle,

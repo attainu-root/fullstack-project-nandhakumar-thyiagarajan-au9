@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Alert from "@material-ui/lab/Alert";
 import "./Login.css";
 import { Link } from "react-router-dom";
+// import axios from "axios";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -70,7 +71,7 @@ class Login extends React.Component {
         alertMessage: "",
       });
 
-      fetch("http://localhost:8900/register", {
+      fetch("https://instax-backend.herokuapp.com/register", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -126,7 +127,7 @@ class Login extends React.Component {
       });
 
       // posting for login
-      fetch("http://localhost:8900/login", {
+      fetch("https://instax-backend.herokuapp.com/login", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -147,6 +148,7 @@ class Login extends React.Component {
               alertMessage: data,
             });
           } else {
+            console.log(document.cookie);
             this.props.history.push("/homepage");
           }
         })
@@ -157,6 +159,33 @@ class Login extends React.Component {
             alertMessage: "SERVER ERROR",
           });
         });
+      // const datas = {
+      //   email: this.state.Email,
+      //   password: this.state.Password,
+      // };
+      // axios
+      //   .post("https://instax-backend.herokuapp.com/login", datas, {
+      //     withCredentials: true,
+      //   })
+      //   .then((response) => {
+      //     if (response.data) {
+      //       this.setState({
+      //         ...this.state,
+      //         alert: true,
+      //         alertMessage: response.data,
+      //       });
+      //     } else {
+      //       console.log(document.cookie);
+      //       this.props.history.push("/homepage");
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     this.setState({
+      //       ...this.state,
+      //       alert: true,
+      //       alertMessage: "SERVER DOWN",
+      //     });
+      //   });
     }
   };
 

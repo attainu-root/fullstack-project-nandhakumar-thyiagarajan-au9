@@ -6,7 +6,9 @@ import axios from "axios";
 const Header = ({ props }) => {
   const logout = () => {
     axios
-      .get("http://localhost:8900/logout", { withCredentials: true })
+      .get("https://instax-backend.herokuapp.com/logout", {
+        withCredentials: true,
+      })
       .then((response) => {
         props.history.push("/");
       });

@@ -4,7 +4,6 @@ const { v4: uuidv4 } = require("uuid");
 let secret;
 let email;
 const bcrypt = require("bcrypt");
-const { update } = require("../Schema/RegisterSchema");
 async function emailcheck(req, res) {
   try {
     const check = await users.findOne({ email: req.body.email });

@@ -21,11 +21,12 @@ async function postRegister(req, res) {
       const createUser = await User.create(userData);
 
       if (createUser) {
-        res.status(200).json("");
+        return res.status(200).json("");
       }
     }
   } catch (error) {
-    res.status(500).json(error);
+    return res.status(500).json(error);
+    // console.log(error);
   }
 }
 

@@ -24,9 +24,12 @@ class Forgotpassword extends React.Component {
   checking = () => {
     if (this.state.email) {
       axios
-        .post("http://localhost:8900/forgotpassword/emailcheck", {
-          email: this.state.email,
-        })
+        .post(
+          "https://instax-backend.herokuapp.com/forgotpassword/emailcheck",
+          {
+            email: this.state.email,
+          }
+        )
         .then((response) => {
           if (response.data.email === "PRESENT") {
             this.setState({
@@ -55,9 +58,12 @@ class Forgotpassword extends React.Component {
 
   verification = () => {
     axios
-      .post("http://localhost:8900/forgotpassword/verification", {
-        data: this.state.verification_code,
-      })
+      .post(
+        "https://instax-backend.herokuapp.com/forgotpassword/verification",
+        {
+          data: this.state.verification_code,
+        }
+      )
       .then((response) => {
         if (response.data.data === "NOT VERIFIED") {
           this.setState({
@@ -96,11 +102,14 @@ class Forgotpassword extends React.Component {
           alert_content: "PASSWORD DOESNT MATCH",
         });
       } else {
-        console.log("working");
+        // console.log("working");
         axios
-          .post("http://localhost:8900/forgotpassword/newpassword", {
-            data: this.state.repeat_password,
-          })
+          .post(
+            "https://instax-backend.herokuapp.com/forgotpassword/newpassword",
+            {
+              data: this.state.repeat_password,
+            }
+          )
           .then((response) => {
             if (response.data.data === "OKAY") {
               this.props.history.push("/");
