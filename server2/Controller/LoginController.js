@@ -21,13 +21,19 @@ async function postLogin(req, res) {
         const token = await jwt.sign({ data: findUser._id }, secret.secret, {
           expiresIn: "20h",
         });
-
-        return res.cookie("token", token).json("");
+        return (
+          res
+            // .cookie("token", token, {
+            //   // httpOnly: true,
+            //   // domain: "https://instax-frontend.herokuapp.com",
+            // })
+            .json({ token: token })
+        );
       } else {
-        res.json("INCORRECT PASSWORD");
+        res.json({ message: "INCORECT PASSWORD" });
       }
     } else {
-      res.json("EMAIL NOT REGISTERED");
+      res.json({ message: "INVALID EMAIL" });
     }
   } catch (error) {
     res.send(error);

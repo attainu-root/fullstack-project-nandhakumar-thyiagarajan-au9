@@ -10,6 +10,7 @@ import axios from "axios";
 import { updateAction } from "../../Actions/update";
 import { postDelete } from "../../Actions/delete";
 import { connect } from "react-redux";
+import Cookies from "js-cookie";
 
 class Cards extends React.Component {
   constructor(props) {
@@ -27,9 +28,11 @@ class Cards extends React.Component {
   };
 
   update = () => {
+    const token = { token: Cookies.get("token") };
     axios
-      .get(
+      .post(
         `https://instax-backend.herokuapp.com/post/update/${this.props.data._id}`,
+        token,
         {
           withCredentials: true,
         }
@@ -49,6 +52,7 @@ class Cards extends React.Component {
         "https://instax-backend.herokuapp.com/post/checklikes",
         {
           _id: this.props.data._id,
+          token: Cookies.get("token"),
         },
         { withCredentials: true }
       )
@@ -69,6 +73,7 @@ class Cards extends React.Component {
         {
           _id: this.props.data._id,
           toggle: this.state.toggle,
+          token: Cookies.get("token"),
         },
         { withCredentials: true }
       )

@@ -21,7 +21,12 @@ const postRouter = require("./Router/PostRouter");
 const LogoutRouter = require("./Router/LogoutRouter");
 const ForgotRouter = require("./Router/Forgotpassword");
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(
+  cors({
+    credentials: true,
+    origin: "https://instax-frontend.herokuapp.com",
+  })
+);
 app.use(bodyParser.json({ limit: "50mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());

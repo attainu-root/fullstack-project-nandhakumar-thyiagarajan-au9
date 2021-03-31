@@ -7,7 +7,7 @@ const collection = require("../Schema/RegisterSchema");
 async function createpost(req, res) {
   try {
     console.log(req.body);
-    const decode = await jsonwebtoken.decode(req.cookies.token, secret.secret);
+    const decode = await jsonwebtoken.decode(req.body.token, secret.secret);
 
     const user = await collection.findById(decode.data);
     const userEmail = user.email;
@@ -37,7 +37,7 @@ async function fetchpost(req, res) {
 
 async function checklikes(req, res) {
   try {
-    const user = await jsonwebtoken.decode(req.cookies.token, secret.secret);
+    const user = await jsonwebtoken.decode(req.body.token, secret.secret);
     const postdetails = await postcollection.findById(req.body._id);
     const likesArray = postdetails.likes;
     const noOflikes = likesArray.length;
@@ -54,7 +54,7 @@ async function checklikes(req, res) {
 
 async function togglelike(req, res) {
   try {
-    const user = await jsonwebtoken.decode(req.cookies.token, secret.secret);
+    const user = await jsonwebtoken.decode(req.body.token, secret.secret);
     const post = await postcollection.findById(req.body._id);
     const { likes, id, email, caption, file } = post;
     if (req.body.toggle === "LIKE") {
@@ -85,10 +85,7 @@ async function togglelike(req, res) {
 
 async function updatecheck(req, res) {
   try {
-    const { data } = await jsonwebtoken.decode(
-      req.cookies.token,
-      secret.secret
-    );
+    const { data } = await jsonwebtoken.decode(req.body.token, secret.secret);
     const { email: userEmail } = await collection.findById(data);
     const { email: postEmail } = await postcollection.findById(req.params.id);
     if (userEmail === postEmail) {

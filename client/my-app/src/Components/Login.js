@@ -4,7 +4,8 @@ import Button from "@material-ui/core/Button";
 import Alert from "@material-ui/lab/Alert";
 import "./Login.css";
 import { Link } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
+import Cookies from "js-cookie";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -126,29 +127,24 @@ class Login extends React.Component {
         alertMessage: "",
       });
 
-      // posting for login
-      fetch("https://instax-backend.herokuapp.com/login", {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        credentials: "include",
-        body: JSON.stringify({
-          email: this.state.Email,
-          password: this.state.Password,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data) {
+      const datas = {
+        email: this.state.Email,
+        password: this.state.Password,
+      };
+      axios
+        .post("https://instax-backend.herokuapp.com/login", datas, {
+          withCredentials: true,
+        })
+        .then((response) => {
+          if (response.data.message) {
             this.setState({
               ...this.state,
               alert: true,
-              alertMessage: data,
+              alertMessage: response.data.message,
             });
-          } else {
-            console.log(document.cookie);
+          }
+          if (response.data.token) {
+            Cookies.set("token", response.data.token);
             this.props.history.push("/homepage");
           }
         })
@@ -156,36 +152,9 @@ class Login extends React.Component {
           this.setState({
             ...this.state,
             alert: true,
-            alertMessage: "SERVER ERROR",
+            alertMessage: "SERVER DOWN",
           });
         });
-      // const datas = {
-      //   email: this.state.Email,
-      //   password: this.state.Password,
-      // };
-      // axios
-      //   .post("https://instax-backend.herokuapp.com/login", datas, {
-      //     withCredentials: true,
-      //   })
-      //   .then((response) => {
-      //     if (response.data) {
-      //       this.setState({
-      //         ...this.state,
-      //         alert: true,
-      //         alertMessage: response.data,
-      //       });
-      //     } else {
-      //       console.log(document.cookie);
-      //       this.props.history.push("/homepage");
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     this.setState({
-      //       ...this.state,
-      //       alert: true,
-      //       alertMessage: "SERVER DOWN",
-      //     });
-      //   });
     }
   };
 
@@ -266,13 +235,11 @@ class Login extends React.Component {
 
             {this.state.signup ? (
               <>
-                {/* redirection to login */}
                 <Button onClick={this.controlChange}>LOGIN</Button>
               </>
             ) : (
               <>
                 <div>
-                  {/* redirection to signup */}
                   <Button onClick={this.controlChange}>SIGN UP</Button>
                   <Button>
                     <Link className="forgot_password" to="/forgotpassword">

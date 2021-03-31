@@ -4,7 +4,6 @@ import Router from "./Router/Routes";
 import "./index.css";
 
 import RootReducer from "./Reducers/Rootreducer";
-
 import thunk from "redux-thunk";
 import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";

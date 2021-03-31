@@ -6,11 +6,13 @@ import Alert from "@material-ui/lab/Alert";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import Cokkies from "js-cookie";
 
 // import action from redux
 import { postApi } from "../../Actions/post";
 import { clearUpdate, updated } from "../../Actions/update";
 import { connect } from "react-redux";
+import Cookies from "js-cookie";
 
 class Form extends React.Component {
   constructor(props) {
@@ -60,6 +62,7 @@ class Form extends React.Component {
     const postdatas = {
       file: this.state.form_file,
       caption: this.state.caption,
+      token: Cookies.get("token"),
     };
     // dispatch has taken here
     this.props.postApi(postdatas);

@@ -12,7 +12,7 @@ postRouter.post("/checklikes", postController.checklikes);
 
 postRouter.post("/togglelike", postController.togglelike);
 
-postRouter.get("/update/:id", postController.updatecheck);
+postRouter.post("/update/:id", postController.updatecheck);
 
 postRouter.patch("/updated", postController.updated);
 

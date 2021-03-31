@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Header.css";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const Header = ({ props }) => {
   const logout = () => {
@@ -10,6 +11,7 @@ const Header = ({ props }) => {
         withCredentials: true,
       })
       .then((response) => {
+        Cookies.remove("token");
         props.history.push("/");
       });
     // console.log(props.history.push("/"));
