@@ -1,7 +1,7 @@
 .postSection {
   height: 82vh;
   width: 60vw;
-  border: 1px solid black;
+  border: 1px solid lightslategray;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -13,5 +13,13 @@
     font-weight: 150;
     color: slateblue;
     margin: 15px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .postSection {
+    width: 100vw;
+    height: max-content;
+    border: none;
   }
 }

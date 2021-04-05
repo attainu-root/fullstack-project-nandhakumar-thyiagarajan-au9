@@ -14,7 +14,6 @@ const Header = ({ props }) => {
         Cookies.remove("token");
         props.history.push("/");
       });
-    // console.log(props.history.push("/"));
   };
   return (
     <React.Fragment>

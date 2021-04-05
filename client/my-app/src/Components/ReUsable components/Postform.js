@@ -6,7 +6,6 @@ import Alert from "@material-ui/lab/Alert";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-// import Cokkies from "js-cookie";
 
 // import action from redux
 import { postApi } from "../../Actions/post";
@@ -94,7 +93,6 @@ class Form extends React.Component {
   };
 
   render() {
-    // console.log(this.props.update);
     return (
       <React.Fragment>
         <section className="post_form">

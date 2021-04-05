@@ -1,7 +1,7 @@
 .post_form {
   height: 82vh;
   width: 40vw;
-  border: 1px solid black;
+  border: 1px solid lightslategrey;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,5 +48,12 @@
   width: 115px;
   height: 37px;
   opacity: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .post_form {
+    width: 80%;
+    border: none;
+  }
 }
 /*# sourceMappingURL=Postform.css.map */

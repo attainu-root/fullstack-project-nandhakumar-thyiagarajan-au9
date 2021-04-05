@@ -21,14 +21,7 @@ async function postLogin(req, res) {
         const token = await jwt.sign({ data: findUser._id }, secret.secret, {
           expiresIn: "20h",
         });
-        return (
-          res
-            // .cookie("token", token, {
-            //   // httpOnly: true,
-            //   // domain: "https://instax-frontend.herokuapp.com",
-            // })
-            .json({ token: token })
-        );
+        return res.json({ token: token });
       } else {
         res.json({ message: "INCORECT PASSWORD" });
       }

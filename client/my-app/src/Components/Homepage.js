@@ -2,17 +2,12 @@ import React from "react";
 import Header from "./ReUsable components/Header";
 import Postform from "./ReUsable components/Postform";
 import PostSection from "./ReUsable components/PostSection";
-
+import "../Components/styles/Homepage.css";
 const Homepage = (props) => {
-  // const props = 'Homepage';
-  // if (!document.cookie) {
-  //   return props.history.push("/");
-  // }
   return (
     <>
       <Header props={props} />
-      {/* //!inline styling */}
-      <section style={{ display: "flex" }}>
+      <section className="homepage">
         <Postform />
         <PostSection />
       </section>

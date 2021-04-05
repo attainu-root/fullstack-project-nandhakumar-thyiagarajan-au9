@@ -15,7 +15,6 @@ class PostSection extends React.Component {
     this.props.fetchposts();
   };
   render() {
-    // console.log(this.props.post);
     return (
       <React.Fragment>
         <section className="postSection">

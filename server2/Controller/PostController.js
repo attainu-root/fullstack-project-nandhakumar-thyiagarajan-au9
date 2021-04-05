@@ -115,7 +115,6 @@ async function updated(req, res) {
 
 async function deletepost(req, res) {
   try {
-    // console.log(req.params.id);
     const postid = req.params.id;
     const deletepost = await postcollection.findByIdAndDelete(postid);
     if (deletepost) {
